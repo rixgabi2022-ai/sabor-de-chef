@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sabor de Chef — Curso de Culinária</title>
+  <meta name="description" content="Sabor de Chef: aprenda técnicas culinárias, receitas e apresentação de pratos de forma prática e descomplicada.">
+  <style>
+    :root{
+      --bg:#fffaf3; --paper:#ffffff; --ink:#241b16; --muted:#6f625b;
+      --accent:#d95735; --accent2:#f2a23a; --dark:#2d211b;
+      --line:#eadfd4; --shadow:0 18px 50px rgba(65,40,25,.10);
+      --radius:22px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1120px,92%);margin:auto}
+    header{position:sticky;top:0;z-index:20;background:rgba(255,250,243,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(234,223,212,.8)}
+    nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .logo{font-weight:900;font-size:1.25rem;letter-spacing:-.04em}
+    .logo span{color:var(--accent)}
+    .navlinks{display:flex;gap:24px;align-items:center;font-size:.94rem;color:#51443d}
+    .navlinks a:hover{color:var(--accent)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;padding:14px 21px;border-radius:999px;font-weight:800;transition:.2s transform,.2s box-shadow,.2s background}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--accent);color:#fff;box-shadow:0 10px 24px rgba(217,87,53,.25)}
+    .btn-primary:hover{background:#c94c2c}
+    .btn-dark{background:var(--dark);color:#fff}
+    .btn-light{background:#fff;color:var(--dark);border:1px solid var(--line)}
+    .hero{padding:82px 0 70px;background:
+      radial-gradient(circle at 85% 15%,rgba(242,162,58,.24),transparent 28%),
+      radial-gradient(circle at 10% 30%,rgba(217,87,53,.12),transparent 26%)}
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:55px;align-items:center}
+    .eyebrow{display:inline-block;background:#fff0e7;color:#b84327;padding:7px 12px;border-radius:999px;font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px}
+    h1{font-size:clamp(3rem,6vw,5.7rem);line-height:.96;letter-spacing:-.065em;margin-bottom:22px}
+    h1 span{color:var(--accent)}
+    .hero p{font-size:1.12rem;color:var(--muted);max-width:610px;margin-bottom:30px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .mini-proof{display:flex;gap:18px;align-items:center;margin-top:28px;color:var(--muted);font-size:.9rem}
+    .avatars{display:flex}.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#f2a23a,#d95735);border:3px solid var(--bg);margin-left:-9px}.avatar:first-child{margin-left:0}
+    .food-card{position:relative;min-height:510px;border-radius:36px;background:linear-gradient(145deg,#3a251d,#1e1713);box-shadow:var(--shadow);overflow:hidden;padding:28px;color:white}
+    .food-card:before{content:"";position:absolute;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,#f2a23a 0 20%,#d95735 21% 43%,#704331 44% 60%,transparent 61%);right:-80px;top:70px;filter:saturate(.9)}
+    .food-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.7));}
+    .dish{position:absolute;z-index:2;left:30px;bottom:30px;max-width:310px}
+    .dish h3{font-size:2rem;line-height:1.05;margin-bottom:9px}
+    .dish p{color:#e6d8ce}
+    .badge{position:absolute;z-index:3;right:25px;top:25px;background:#fff;color:var(--dark);border-radius:18px;padding:13px 15px;font-weight:900;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+    section{padding:90px 0}
+    .section-head{text-align:center;max-width:720px;margin:0 auto 45px}
+    .section-head h2{font-size:clamp(2.1rem,4vw,3.3rem);line-height:1.05;letter-spacing:-.045em;margin-bottom:13px}
+    .section-head p{color:var(--muted)}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:0 10px 35px rgba(65,40,25,.05)}
+    .icon{width:48px;height:48px;border-radius:14px;background:#fff0e7;display:grid;place-items:center;font-size:1.35rem;margin-bottom:18px}
+    .card h3{font-size:1.15rem;margin-bottom:8px}
+    .card p{color:var(--muted);font-size:.95rem}
+    .dark-section{background:var(--dark);color:white}
+    .dark-section .section-head p,.dark-section .card p{color:#cdbeb4}
+    .dark-section .card{background:#392a23;border-color:#4c3b32}
+    .modules{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .module{display:flex;gap:17px;align-items:flex-start;background:#fff;border:1px solid var(--line);padding:20px;border-radius:18px}
+    .num{min-width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:white;font-weight:900}
+    .module p{color:var(--muted);font-size:.92rem;margin-top:4px}
+    .bonus{background:linear-gradient(135deg,#fff2df,#ffe5d8);border:1px solid #f1cbb8}
+    .pricing{display:grid;grid-template-columns:.8fr 1.2fr;gap:25px;align-items:stretch}
+    .offer-info{padding:25px}
+    .offer-info ul{list-style:none;margin-top:20px}
+    .offer-info li{margin:12px 0;color:#5e514a}.offer-info li::before{content:"✓";color:#c54e31;font-weight:900;margin-right:10px}
+    .price-card{background:var(--dark);color:#fff;border-radius:28px;padding:35px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .price-card small{color:#d5c7bf}
+    .price{font-size:4rem;font-weight:950;letter-spacing:-.06em;margin:10px 0}
+    .price small{font-size:1rem;font-weight:600}
+    .price-card ul{list-style:none;margin:20px 0 28px}.price-card li{padding:7px 0;color:#eee3dc}
+    .price-card li::before{content:"✓";margin-right:9px;color:#f2a23a;font-weight:900}
+    .faq{max-width:850px;margin:auto}
+    details{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin:11px 0}
+    summary{font-weight:800;cursor:pointer}
+    details p{color:var(--muted);padding-top:12px}
+    .cta{padding:90px 0;text-align:center;background:linear-gradient(135deg,#d95735,#b93e27);color:white}
+    .cta h2{font-size:clamp(2.3rem,5vw,4.3rem);line-height:1;letter-spacing:-.055em;margin-bottom:15px}
+    .cta p{max-width:650px;margin:0 auto 26px;color:#ffe9e1}
+    footer{padding:35px 0;background:#1e1713;color:#cfc1b8}
+    footer .container{display:flex;justify-content:space-between;gap:20px;align-items:center}
+    .footer-links{display:flex;gap:18px;font-size:.9rem}
+    .toast{position:fixed;right:20px;bottom:20px;background:#1f1814;color:#fff;padding:14px 18px;border-radius:14px;box-shadow:var(--shadow);opacity:0;transform:translateY(20px);pointer-events:none;transition:.25s;z-index:50}
+    .toast.show{opacity:1;transform:translateY(0)}
+    @media(max-width:850px){
+      .navlinks{display:none}.hero-grid,.pricing{grid-template-columns:1fr}.hero{padding-top:55px}.food-card{min-height:390px}.grid3,.modules{grid-template-columns:1fr}section{padding:65px 0}
+      footer .container{flex-direction:column;text-align:center}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="#inicio">Sabor <span>de Chef</span> 🍳</a>
+      <div class="navlinks">
+        <a href="#curso">O curso</a>
+        <a href="#modulos">Módulos</a>
+        <a href="#bonus">Bônus</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a class="btn btn-primary" href="#inscricao">Quero aprender</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Curso completo de culinária</div>
+      <h1>Seu próximo prato pode ser <span>inesquecível.</span></h1>
+      <p>Aprenda a cozinhar com mais segurança, criatividade e sabor. Do básico às técnicas que transformam uma receita simples em um prato digno de restaurante.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#inscricao">Conhecer o curso →</a>
+        <a class="btn btn-light" href="#modulos">Ver o conteúdo</a>
+      </div>
+      <div class="mini-proof">
+        <div class="avatars"><span class="avatar"></span><span class="avatar"></span><span class="avatar"></span></div>
+        <span>Aprendizado prático, passo a passo.</span>
+      </div>
+    </div>
+    <div class="food-card" aria-label="Imagem ilustrativa de um prato">
+      <div class="badge">👨‍🍳 Do básico ao avançado</div>
+      <div class="dish">
+        <h3>Menos complicação.<br>Mais sabor.</h3>
+        <p>Receitas, técnicas e dicas para você cozinhar com confiança.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="curso">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Por que aprender com o Sabor de Chef?</div>
+      <h2>Uma cozinha mais simples, criativa e saborosa.</h2>
+      <p>O curso foi pensado para transformar conhecimento culinário em prática, sem complicação e sem exigir experiência prévia.</p>
+    </div>
+    <div class="grid3">
+      <article class="card"><div class="icon">🔪</div><h3>Técnicas essenciais</h3><p>Entenda cortes, preparo, cocção, temperos e organização para trabalhar melhor na cozinha.</p></article>
+      <article class="card"><div class="icon">🍝</div><h3>Receitas variadas</h3><p>Explore pratos, massas, carnes, acompanhamentos, molhos e sobremesas para diferentes ocasiões.</p></article>
+      <article class="card"><div class="icon">✨</div><h3>Apresentação</h3><p>Aprenda princípios simples de montagem para deixar seus pratos mais bonitos e apetitosos.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="dark-section" id="modulos">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Conteúdo do curso</div>
+      <h2>Uma jornada culinária em 8 módulos.</h2>
+      <p>Comece pelos fundamentos e avance gradualmente para preparos mais elaborados.</p>
+    </div>
+    <div class="modules">
+      <div class="module"><div class="num">01</div><div><h3>Fundamentos da cozinha</h3><p>Utensílios, organização, higiene e preparação eficiente.</p></div></div>
+      <div class="module"><div class="num">02</div><div><h3>Cortes e ingredientes</h3><p>Técnicas de corte, conservação e aproveitamento.</p></div></div>
+      <div class="module"><div class="num">03</div><div><h3>Temperos e sabores</h3><p>Como combinar aromas, ervas, especiarias e acidez.</p></div></div>
+      <div class="module"><div class="num">04</div><div><h3>Molhos e acompanhamentos</h3><p>Bases versáteis para elevar receitas do dia a dia.</p></div></div>
+      <div class="module"><div class="num">05</div><div><h3>Carnes, frango e peixe</h3><p>Princípios de preparo, ponto e textura.</p></div></div>
+      <div class="module"><div class="num">06</div><div><h3>Massas e pratos especiais</h3><p>Preparos clássicos para impressionar à mesa.</p></div></div>
+      <div class="module"><div class="num">07</div><div><h3>Sobremesas</h3><p>Doces e sobremesas para finalizar o menu com estilo.</p></div></div>
+      <div class="module"><div class="num">08</div><div><h3>Montagem e criatividade</h3><p>Como montar pratos equilibrados e desenvolver suas próprias ideias.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="bonus">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Materiais extras</div>
+      <h2>Para você continuar praticando.</h2>
+      <p>Além das aulas, organize sua rotina culinária com materiais de apoio.</p>
+    </div>
+    <div class="grid3">
+      <article class="card bonus"><div class="icon">📖</div><h3>E-book de receitas</h3><p>Uma seleção de receitas para praticar diferentes técnicas ao longo do curso.</p></article>
+      <article class="card bonus"><div class="icon">🛒</div><h3>Lista de compras</h3><p>Checklist de ingredientes para facilitar seu planejamento e reduzir esquecimentos.</p></article>
+      <article class="card bonus"><div class="icon">📋</div><h3>Guia de planejamento</h3><p>Organize preparos, refeições e ingredientes de forma mais prática.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="inscricao">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Inscrição</div>
+      <h2>Comece sua jornada na cozinha.</h2>
+      <p>Escolha a forma de acesso que você deseja oferecer aos seus alunos.</p>
+    </div>
+    <div class="pricing">
+      <div class="card offer-info">
+        <h3>Você recebe:</h3>
+        <ul>
+          <li>Aulas estruturadas passo a passo</li>
+          <li>8 módulos de conteúdo</li>
+          <li>Receitas práticas e variadas</li>
+          <li>Materiais de apoio</li>
+          <li>Conteúdo para todos os níveis</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <small>ACESSO AO CURSO</small>
+        <div class="price">R$ 97 <small>à vista</small></div>
+        <p>Uma oferta demonstrativa — substitua pelo seu preço e condições reais.</p>
+        <ul>
+          <li>Acesso ao conteúdo completo</li>
+          <li>Materiais extras</li>
+          <li>Aprendizado no seu ritmo</li>
+        </ul>
+        <button class="btn btn-primary" style="width:100%" onclick="inscrever()">Quero me inscrever</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Dúvidas frequentes</div>
+      <h2>Perguntas que podem surgir.</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Preciso saber cozinhar para começar?</summary><p>Não. O conteúdo começa pelos fundamentos e avança gradualmente, permitindo que iniciantes acompanhem o aprendizado.</p></details>
+      <details><summary>O curso serve para quem já cozinha?</summary><p>Sim. As técnicas e os módulos podem ajudar quem já cozinha a organizar conhecimentos e experimentar novos preparos.</p></details>
+      <details><summary>Posso estudar no meu ritmo?</summary><p>O site foi estruturado para um curso online com aprendizado flexível. Ajuste esta informação conforme o formato real da sua oferta.</p></details>
+      <details><summary>O curso inclui certificado?</summary><p>Você pode oferecer certificado conforme as regras da sua plataforma. Se houver certificado, descreva aqui as condições reais.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2>Seu talento começa na cozinha.</h2>
+    <p>Aprenda, pratique e descubra novas possibilidades com os ingredientes que já fazem parte da sua cozinha.</p>
+    <a class="btn btn-light" href="#inscricao">Quero conhecer o Sabor de Chef</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div><strong>Sabor de Chef</strong><br><small>Curso de culinária</small></div>
+    <div class="footer-links"><a href="#curso">Curso</a><a href="#modulos">Módulos</a><a href="#faq">FAQ</a></div>
+    <small>© 2026 Sabor de Chef. Todos os direitos reservados.</small>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Inscrição selecionada! Conecte este botão ao seu checkout.</div>
+
+<script>
+  function inscrever(){
+    const toast=document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(()=>toast.classList.remove('show'),3500);
+  }
+</script>
+</body>
+</html>
